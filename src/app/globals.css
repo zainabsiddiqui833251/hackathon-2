@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.shop{
+    background-image: url(/images/Rectangle\ 1.png);
+    background-position: center;
+}

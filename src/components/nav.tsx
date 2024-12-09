@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 const Nav = () => {
     return (
-        <nav className="w-full h-[100px] flex flex-col justify-center bg-[#fbebb5] items-center relative text-[18px]  ">
+        <nav className="w-full h-[100px] flex flex-col justify-center items-center z-10 relative text-[18px]  ">
             {/* Centered Links */}
             <ul className="flex items-center justify-between text-[16px] font-medium w-[430px]">
                 <li>
                     <Link href="/">Home</Link>
                 </li>
                 <li>
-                    <Link href="">Shop</Link>
+                    <Link href="/shop">Shop</Link>
                 </li>
                 <li>
                     <Link href="">About</Link>
