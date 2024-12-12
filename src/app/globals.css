@@ -6,3 +6,11 @@
     background-image: url(/images/Rectangle\ 1.png);
     background-position: center;
 }
+
+input[type="radio"]:checked + .custom-radio::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+  }

@@ -22,7 +22,7 @@ const Nav = () => {
 
             {/* Icons on the Right */}
             <div className="absolute top-1/2 right-3 transform -translate-y-1/2 flex items-center gap-12 font-bold text-[22px] w-[247px] h-[28px]">
-                <i className="bi bi-person-exclamation"></i>
+                <Link href='/myaccount' ><i className="bi bi-person-exclamation"></i></Link>
                 <i className="bi bi-search"></i>
                 <i className="bi bi-heart"></i>
                 <i className="bi bi-cart3"></i>
