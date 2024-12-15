@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-
 const Cart = () => {
     return (
         <main>
@@ -37,12 +36,12 @@ const Cart = () => {
                             <Image src='/images/Asgaard sofa 1.png' alt='' width={106} height={106}></Image>
                         </div>
                         <div>
-                            <p>agaard sofa</p>
+                            <p>asgaard sofa</p>
                         </div>
                         <div>
                             <p>rs 250,000.00</p>
                         </div>
-                        <div>
+                        <div className='border-2 rounded-lg border-[#9F9F9F]  w-[30px] h-[30px] flex justify-center items-center'>
                             <p className='text-black'>1</p>
                         </div>
                         <div>
@@ -52,8 +51,8 @@ const Cart = () => {
                     </div>
                 </div>
 
-                <div className='w-[32%] bg-[#FFF9E5]  px-16 pb-12 pt-6 capitalize'>
-                    <h2 className='text-[32px] font-semibold text-center mb-16'>cart totals </h2>
+                <div className='w-[32%] bg-[#FFF9E5]  px-16 pb-16 pt-4 capitalize'>
+                    <h2 className='text-[32px] font-semibold text-center mb-10'>cart totals </h2>
                     <div className='flex justify-between text-[16px] items-center mb-6'>
                         <h4 className='font-medium'>subtotal</h4>
                         <p className='text-[#9F9F9F]'>rs 250,000.00</p>
@@ -62,7 +61,7 @@ const Cart = () => {
                         <h4 className='font-medium'>total</h4>
                         <h4 className='text-[20px] font-medium text-[#B88E2F]'>rs 250,000.00</h4>
                     </div>
-                    <Link href='/checkout'><button className='w-[222px] h-[58px] border border-black text-[20px] rounded-lg block m-auto flex justify-center items-center capitalize '>check out</button></Link>
+                    <Link href='/checkout'><button className='w-[222px] h-[58px] border border-black text-[20px] rounded-lg m-auto flex justify-center items-center capitalize '>check out</button></Link>
                 </div>
             </section>
 
