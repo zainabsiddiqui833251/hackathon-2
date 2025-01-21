@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Ourblogs = () => {
     return (
@@ -32,7 +33,7 @@ const Ourblogs = () => {
                     <p><i className="bi bi-clock"></i> 5 min &#8200; <i className="bi bi-calendar"></i> 12th Oct 2022</p>
                 </div>
             </div>
-            <p className='w-[126px] text-[20px] font-medium text-center mt-16 h-[49px] border-b-2 border-black capitalize m-auto'>view all post</p>
+            <p className='w-[126px] text-[20px] font-medium text-center mt-16 h-[49px] border-b-2 border-black capitalize m-auto'><Link href='/blogs'>view all post</Link></p>
         </section>
     )
 }

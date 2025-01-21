@@ -1,7 +1,38 @@
-import React from 'react'
-import Image from 'next/image'
+import { client } from '@/sanity/lib/client';
+import Image from 'next/image';
 
-const Product_details = () => {
+interface Product {
+    _id: string;
+    name: string;
+    description: string;
+    price: string;
+    stockLevel: number;
+    category: string;
+    imagePath: string;
+}
+
+const ProductDetails = async ({ params }: { params: { id: string } }) => {
+    console.log("Route Params:", params); // Debug log
+
+    if (!params.id) {
+        return (
+            <div>
+                <h1>Invalid Product ID</h1>
+            </div>
+        );
+    }
+
+    const query = `*[_type == "product" && _id == $productId][0]`;
+    const product: Product | null = await client.fetch(query, { productId: params.id });
+
+    if (!product) {
+        return (
+            <div>
+                <h1>Product Not Found</h1>
+            </div>
+        );
+    }
+
     return (
         <main>
             <nav className='w-full px-20'>
@@ -11,36 +42,36 @@ const Product_details = () => {
                     <p className='text-[16px] text-[#9F9F9F]'>shop</p>
                     <p className='text-[20px]'> <i className='bi bi-chevron-right'></i></p>
                     <p className='text-[37px]'>&#65372;</p>
-                    <p className='text-[16px] '>add product name</p>
+                    <p className='text-[16px] flex justify-center items-center'>{product.name}</p>
                 </div>
             </nav>
 
             <section>
-                <div className='w-[1241px] h-[730px] m-auto border my-16 flex justify-between '>
+                <div className='w-[1241px] h-[730px] m-auto my-16 flex justify-between '>
                     <div className='w-[76px] h-[416px] flex flex-col justify-between items-center'>
                         <div className='w-[76px] h-[80px] bg-[#FFF9E5]'>
-                            <Image src='/product_image' alt='' width={74} height={44}></Image>
+                            <Image src={product.imagePath} alt='' width={74} height={44}></Image>
                         </div>
                         <div className='w-[76px] h-[80px] bg-[#FFF9E5]'>
-                            <Image src='/product_image' alt='' width={74} height={44}></Image>
+                            <Image src={product.imagePath} alt='' width={74} height={44}></Image>
                         </div>
                         <div className='w-[76px] h-[80px] bg-[#FFF9E5]'>
-                            <Image src='/product_image' alt='' width={74} height={44}></Image>
+                            <Image src={product.imagePath} alt='' width={74} height={44}></Image>
                         </div>
                         <div className='w-[76px] h-[80px] bg-[#FFF9E5]'>
-                            <Image src='/product_image' alt='' width={74} height={44}></Image>
+                            <Image src={product.imagePath} alt='' width={74} height={44}></Image>
                         </div>
                     </div>
                     <div className='w-[481px] h-[500px]'>
                         <div className='w-[423px ] h-[500px] bg-[#fff9e5]'>
-                            <Image src='/product_image' alt='' width={74} height={44}></Image>
+                            <Image src={product.imagePath} alt='' width={74} height={44}></Image>
                         </div>
                     </div>
                     <div className='w-[606px] h-[731px] capitalize'>
-                        <h2 className='text-[42px]'>add product name</h2>
-                        <h4 className='text-[24px] font-medium text-[#9f9f9f]'> add product price</h4>
+                        <h2 className='text-[42px]'>{product.name}</h2>
+                        <h4 className='text-[24px] font-medium text-[#9f9f9f]'>{product.price} $</h4>
                         <h1 className='text-[#FFDA5B]'><i className="bi bi-star-fill"></i>&#8200; &#8200;<i className="bi bi-star-fill"></i>&#8200; &#8200;<i className="bi bi-star-fill"></i>&#8200; &#8200;<i className="bi bi-star-fill"></i>&#8200; &#8200;<i className="bi bi-star-half"></i> <span className='text-[30px] text-[#9F9F9F]'>&#65372;</span> <span className='text-[13px] text-[#9F9F9F]'> 5 customers review</span></h1>
-                        <p className='text-[13px]'>add description 1</p>
+                        <p className='text-[13px]'>{product.description}</p>
                         <div className='w-[123px] h-[63px] mt-10'>
                             <h5 className='text-[14px]'>size</h5>
                             <div className='flex justify-between mt-6'>
@@ -69,26 +100,34 @@ const Product_details = () => {
                         </div>
                         <div className='bg-black h-[1px] w-full opacity-30'></div>
                         <div className='capitalize text-[#9f9f9f]'>
-                            <p className='text-[#9f9f9f] mb-4'>sku :add here </p>
-                            <p className='text-[#9f9f9f] mb-4'>category :add here </p>
-                            <p className='text-[#9f9f9f] mb-4'>tags : add here </p>
+                            <p className='text-[#9f9f9f] mb-4'>sku :default </p>
+                            <p className='text-[#9f9f9f] mb-4'>category :default </p>
+                            <p className='text-[#9f9f9f] mb-4'>tags : default </p>
                             <p className='text-[#9f9f9f] mb-4'>share : <i className="bi bi-facebook"></i>  &#8200; &#8200;  <i className="bi bi-linkedin"></i>  &#8200; &#8200; <i className="bi bi-twitter"></i></p>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div className='text-[24px] text-[#9F9F9F] capitalize flex justify-center items-center gap-8'>
-                        <h2 className='text-black'>description</h2>
+                        <h2 className='text-black'>Description</h2>
                         <h2>additional information</h2>
                         <h2>reviews[5]</h2>
                         
                     </div>
-                    <p>add description1</p>
-                    <p>add product_description2</p>
+                    <p className='text-center my-3'>{product.description}</p>
+                    <p className='text-center my-3'>{product.description}</p>
                     <div className='flex justify-center items-center gap-6'>
-                        <Image src='/product_images' alt='' width={605} height={348} />
+                        <Image 
+                        src={product.imagePath}
+                         alt='' 
+                         width={605} 
+                         height={348} />
 
-                        <Image src='/product_images' alt='' width={605} height={348}/>
+                        <Image 
+                        src={product.imagePath} 
+                        alt='' 
+                        width={605} 
+                        height={348}/>
                     </div>
                 </div>
             </section>
@@ -128,4 +167,7 @@ const Product_details = () => {
     )
 }
 
-export default Product_details
+export default ProductDetails
+
+
+

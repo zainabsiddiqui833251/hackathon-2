@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Home2 = () => {
     return (
-        <section className='bg-[#faf4f4] w-full mt-6 flex-wrap h-[672px] flex justify-end gap-8 text-left items-center pr-6'>
+        <section className='bg-[#faf4f4] w-full  flex-wrap h-[672px] mt-[680px] flex justify-end gap-8 text-left items-center pr-6'>
             <div className='w-[605px] h-[562px]  flex flex-col pt-10 pl-40'>
                 <div>
                     <Image src='/images/table.png' alt='' width={500} height={400} className=' h-[400px]'></Image>
