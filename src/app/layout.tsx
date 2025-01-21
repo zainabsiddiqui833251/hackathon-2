@@ -1,5 +1,4 @@
 'use client'
-import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/nav";
