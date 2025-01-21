@@ -39,6 +39,7 @@ const Shop = () => {
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const totalPages = Math.ceil(products.length / productsPerPage);
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1); // Generate page numbers
 
   return (
     <main>
@@ -111,15 +112,15 @@ const Shop = () => {
 
       {/* Pagination Section */}
       <div className="w-[392px] h-[60px] flex justify-between items-center m-auto mt-10">
-        {[...Array(totalPages).keys()].map((page) => (
+        {pageNumbers.map((page) => (
           <button
-            key={page + 1}
-            onClick={() => setCurrentPage(page + 1)}
+            key={page}
+            onClick={() => setCurrentPage(page)}
             className={`w-[60px] h-[60px] rounded-md text-[20px] ${
-              currentPage === page + 1 ? 'bg-[#FBEBB5]' : 'bg-[#FFF9E5]'
+              currentPage === page ? 'bg-[#FBEBB5]' : 'bg-[#FFF9E5]'
             }`}
           >
-            {page + 1}
+            {page}
           </button>
         ))}
       </div>
