@@ -37,9 +37,6 @@ const blogData = [
 const Blogs = () => {
     const [showMore, setShowMore] = useState(false);
 
-    const toggleShowMore = () => {
-        setShowMore(!showMore);
-    };
 
     return (
         <main>
