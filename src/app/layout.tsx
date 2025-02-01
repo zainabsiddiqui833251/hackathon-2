@@ -29,7 +29,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
         {/* Render Nav only if it's not a studio page */}
         {!isStudioPage && <Nav />}
         {children}

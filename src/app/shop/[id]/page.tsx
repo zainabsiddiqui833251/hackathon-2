@@ -1,5 +1,7 @@
+'use client'
 import { client } from '@/sanity/lib/client';
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface Product {
     _id: string;
@@ -33,6 +35,7 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
         );
     }
 
+    const [quantity, setQuantity] = useState(1)
     return (
         <main>
             <nav className='w-full px-20'>
@@ -90,10 +93,25 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
                         </div>
                         <div className='my-8 flex items-center gap-4'>
                             <div className='w-[123px] border border-black rounded-lg h-[64px] text-[16px] flex justify-between p-3 items-center'>
-                                <p>+</p>
-                                <p>1</p>
-                                <p>-</p>
-                            </div>
+                                {/* Decrease Button */}
+                                <p
+                                    className='cursor-pointer'
+                                    onClick={() => setQuantity(Math.max(quantity - 1, 1))} // Ensure quantity doesn't go below 1
+                                >
+                                    -
+                                </p>
+
+                                {/* Display Quantity */}
+                                <p>{quantity}</p>
+
+                                {/* Increase Button */}
+                                <p
+                                    className='cursor-pointer'
+                                    onClick={() => setQuantity(quantity + 1)}
+                                >
+                                    +
+                                </p>
+                            </div>;
                             <div className='w-[215px] h-[64px] capitalize flex justify-center items-center border border-black rounded-lg'>
                                 <h3 className='text-[20px] '>add to cart</h3>
                             </div>
@@ -112,57 +130,57 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
                         <h2 className='text-black'>Description</h2>
                         <h2>additional information</h2>
                         <h2>reviews[5]</h2>
-                        
+
                     </div>
                     <p className='text-center my-3'>{product.description}</p>
                     <p className='text-center my-3'>{product.description}</p>
                     <div className='flex justify-center items-center gap-6'>
-                        <Image 
-                        src={product.imagePath}
-                         alt='' 
-                         width={605} 
-                         height={348} />
+                        <Image
+                            src={product.imagePath}
+                            alt=''
+                            width={605}
+                            height={348} />
 
-                        <Image 
-                        src={product.imagePath} 
-                        alt='' 
-                        width={605} 
-                        height={348}/>
+                        <Image
+                            src={product.imagePath}
+                            alt=''
+                            width={605}
+                            height={348} />
                     </div>
                 </div>
             </section>
             <section>
-            <h2 className='text-[36px] font-medium capitalize text-center mt-6 mb-3'>related products</h2>
-            <div className='flex justify-center items-center gap-6 mt-5'>
-                <div className='w-[287px] h-[372px] '>
-                    <Image src='/images/modularsofa.png' alt='' width={400} height={400} className='h-[287px]'></Image>
-                    <h3 className='text-[16px] mb-2 '>Trenton modular sofa_3</h3>
-                    <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
-                </div>
-                <div className='w-[287px] h-[372px] '>
-                    <div className='h-[287px] flex justify-center items-center'>
-                        <Image src='/images/Granite dining table with dining chair 1.png' alt='' width={400} height={400} ></Image>
+                <h2 className='text-[36px] font-medium capitalize text-center mt-6 mb-3'>related products</h2>
+                <div className='flex justify-center items-center gap-6 mt-5'>
+                    <div className='w-[287px] h-[372px] '>
+                        <Image src='/images/modularsofa.png' alt='' width={400} height={400} className='h-[287px]'></Image>
+                        <h3 className='text-[16px] mb-2 '>Trenton modular sofa_3</h3>
+                        <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
                     </div>
-                    <h3 className='text-[16px] mb-2 '>Granite dining table with dining chair</h3>
-                    <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
-                </div>
-                <div className='w-[287px] h-[372px] '>
-                    <div className='h-[287px] flex justify-center items-center'>
-                        <Image src='/images/Outdoor bar table and stool 1.png' alt='' width={350} height={200} ></Image>
+                    <div className='w-[287px] h-[372px] '>
+                        <div className='h-[287px] flex justify-center items-center'>
+                            <Image src='/images/Granite dining table with dining chair 1.png' alt='' width={400} height={400} ></Image>
+                        </div>
+                        <h3 className='text-[16px] mb-2 '>Granite dining table with dining chair</h3>
+                        <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
                     </div>
-                    <h3 className='text-[16px] mb-2 '>Outdoor bar table and stool </h3>
-                    <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
-                </div>
-                <div className='w-[287px] h-[372px] '>
-                    <div className='h-[287px] flex justify-center items-center'>
-                        <Image src='/images/Plain console with teak mirror 1.png' alt='' width={400} height={400} ></Image>
+                    <div className='w-[287px] h-[372px] '>
+                        <div className='h-[287px] flex justify-center items-center'>
+                            <Image src='/images/Outdoor bar table and stool 1.png' alt='' width={350} height={200} ></Image>
+                        </div>
+                        <h3 className='text-[16px] mb-2 '>Outdoor bar table and stool </h3>
+                        <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
                     </div>
-                    <h3 className='text-[16px] mb-2 '>Plain console with teak mirror </h3>
-                    <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
+                    <div className='w-[287px] h-[372px] '>
+                        <div className='h-[287px] flex justify-center items-center'>
+                            <Image src='/images/Plain console with teak mirror 1.png' alt='' width={400} height={400} ></Image>
+                        </div>
+                        <h3 className='text-[16px] mb-2 '>Plain console with teak mirror </h3>
+                        <h4 className='text-[24px] font-medium'>Rs. 25,000.00</h4>
+                    </div>
                 </div>
-            </div>
-            <p className='text-center w-[115px] text-[20px] font-medium my-8 capitalize m-auto block h-[49px] border-b-2 border-black'>view more</p>
-        </section>
+                <p className='text-center w-[115px] text-[20px] font-medium my-8 capitalize m-auto block h-[49px] border-b-2 border-black'>view more</p>
+            </section>
         </main>
     )
 }

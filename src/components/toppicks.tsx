@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 const Toppicks = () => {
     return (
-        <section>
+        <section className='p-5'>
             <h2 className='text-[36px] font-medium text-center mt-6 mb-3'>Top picks for you</h2>
             <p className='text-[16px] font-medium text-center'>Find a bright ideal to suit your taste with our great selection of suspension, floor and table lights.</p>
-            <div className='flex justify-center items-center gap-6 mt-5'>
+            <div className='flex justify-center items-center flex-wrap gap-6 mt-5'>
                 <div className='w-[287px] h-[372px] '>
                     <Image src='/images/modularsofa.png' alt='' width={400} height={400} className='h-[287px]'></Image>
                     <h3 className='text-[16px] mb-2 '>Trenton modular sofa_3</h3>

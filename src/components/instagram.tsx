@@ -15,8 +15,8 @@ const Instagram = () => {
 
             {/* Content Div */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-black z-10">
-                <h2 className="text-[60px] font-bold">our instagram</h2>
-                <p className="text-[20px] my-6">Follow our store on Instagram</p>
+                <h2 className="lg:text-[60px] text-4xl font-bold">our instagram</h2>
+                <p className="lg:text-[20px] text-xl my-6">Follow our store on Instagram</p>
                 <button
                     className="w-[255px] h-[64px] text-[20px] border bg-[#FAF4F4] capitalize rounded-full shadow-[5px_5px_10px_rgba(0,0,0,0.2)]"
                 >
